@@ -51,8 +51,9 @@ def main(urd):
 
 	print(bold(blue('Import and type')))
 	urdkey_import = 'import_type'
-	# Uncomment line below to record a new history in Urd
-	# urd.truncate(urdkey_import, 0)
+	# In a production project you would not truncate the urd db, but
+	# we do it here to simplify if you donwload older files later.
+	urd.truncate(urdkey_import, 0)
 	last_imported = urd.peek_latest(urdkey_import).timestamp
 	for file, date in files:
 		if not exists(join(urd.info.input_directory, file)):
